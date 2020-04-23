@@ -9,13 +9,16 @@ weatherSummary.textContent = '';
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const address = searchInput.value;
-    const url = `http://localhost:5000/weather?address=${address}`;
+    const url = `/weather?address=${address}`;
+    
     messages.textContent = 'Loading...';
     messages.classList.remove('location');
     messages.classList.remove('error');
     temperature.innerHTML = '';
     weatherSummary.textContent = '';
+    
     fetch(url)
         .then(response => response.json())
         .then(data => {
